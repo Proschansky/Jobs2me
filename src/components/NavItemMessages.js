@@ -1,51 +1,66 @@
 import React from 'react'
+import { Consumer } from '../Context'
+import Moment from 'moment'
 
 export default function NavItemMessages() {
+
+  String.prototype.allReplace = function(obj) {
+    var retStr = this;
+    for (var x in obj) {
+        retStr = retStr.replace(new RegExp(x, 'g'), obj[x]);
+    }
+    return retStr;
+};
+
+  const replacementObj = {
+          "/a$/": "1",
+          "second": "s",
+          "seconds": "s",
+          "minute": "m",
+          "minutes": "m",
+          "hour": "h",
+          "hours": "h",
+          "day": "d", 
+          "days": "d",
+          "week": "w",
+          "weeks": "w",
+          "month": "m",
+          "year": "y",
+          "years": "y"        
+        }
+    
     return (
+      <Consumer>
+        {state =>(
         <li className="nav-item dropdown no-arrow mx-1">
             <a className="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i className="fas fa-envelope fa-fw"></i>
                 <span className="badge badge-danger badge-counter">4</span>
             </a>
-            <div className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 className="dropdown-header">
-                  Alerts Center
-                </h6>
-                <a className="dropdown-item d-flex align-items-center" href="#">
-                  <div className="mr-3">
-                    <div className="icon-circle bg-primary">
-                      <i className="fas fa-file-alt text-white"></i>
+          <div className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+              <h6 className="dropdown-header">
+                Message Center
+              </h6>
+            
+              {state.conversations.map((convo, index)=>{
+                return (
+                  <a className="dropdown-item d-flex align-items-center messageModal" href="#"  data-toggle="modal" data-target="#messageModal" key={index}>
+                    <div className="dropdown-list-image mr-3">
+                      <img className="rounded-circle" src="https://via.placeholder.com/50" alt=""/>
+                      <div className="status-indicator bg-success"></div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="small text-gray-500">December 12, 2019</div>
-                    <span className="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a className="dropdown-item d-flex align-items-center" href="#">
-                  <div className="mr-3">
-                    <div className="icon-circle bg-success">
-                      <i className="fas fa-donate text-white"></i>
+                    <div className="font-weight-bold">
+                      <div className="text-truncate">{convo.messages[convo.messages.length -1].message}</div>
+                      <div className="small text-gray-500">{convo.name} {Moment(convo.messages[convo.messages.length - 1].date).fromNow(true)} ago</div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a className="dropdown-item d-flex align-items-center" href="#">
-                  <div className="mr-3">
-                    <div className="icon-circle bg-warning">
-                      <i className="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a className="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
+                  </a>
+                )
+              })}
+              <a className="dropdown-item text-center small text-gray-500" href="#">Show All Messages</a>
+          </div>
         </li>
+        )
+        }
+      </Consumer>
     )
 }
