@@ -6,29 +6,45 @@ export const Consumer = Context.Consumer;
 
 class Provider extends Component {
   // Context state
-  state = {
-    showMessages: false,
-    logoutDisplayed: false,
-    conversations: [
-      {
-        name: "John",
-        messages: [{message: "Hi there! I am wondering if you can help me with a problem I've been having.", date: new Date(2020, 5, 26, 16)}]
-      },
-      {
-        name: "Garrett",
-        messages: [{message: "I have the photos that you ordered last month, how would you like them sent to you?", date: new Date(2020, 5, 25, 15, 36)}]
-      },
-      {
-        name: "Steven",
-        messages: [{message: "Last month's report looks great, I am very happy with the progress so far, keep up the good work!", date: new Date(2020, 5, 24, 12)}]
-      },
-      {
-        name: "Bill",
-        messages: [{message: "Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...", date: new Date(2020, 5, 12, 14)}] 
+
+  constructor(){
+      super()
+      this.state = {
+        showMessages: true,
+        logoutDisplayed: false,
+        activeMessageIndex: undefined,
+        currentMessage: '',
+        conversations: [
+          {
+            name: "John",
+            unseenMessage: false,
+            messages: [{message: "Hi there! I am wondering if you can help me with a problem I've been having.", date: new Date(2020, 4, 26, 16), seen: false}]
+          },
+          {
+            name: "Garrett",
+            unseenMessage: false,
+            messages: [{message: "I have the photos that you ordered last month, how would you like them sent to you?", date: new Date(2020, 4, 25, 15, 36), seen: false}]
+          },
+          {
+            name: "Steven",
+            unseenMessage: false,
+            messages: [{message: "Last month's report looks great, I am very happy with the progress so far, keep up the good work!", date: new Date(2020, 4, 24, 12), seen: false}]
+          },
+          {
+            name: "Bill",
+            unseenMessage: false,
+            messages: [{message: "Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...", date: new Date(2020, 4, 12, 14), seen: false}] 
+          }
+
+        ]
       }
 
-    ]
-  }
+      this.toggleMessages = this.toggleMessages.bind(this);
+      this.toggleLogout = this.toggleLogout.bind(this);
+      this.setActiveMessage = this.setActiveMessage.bind(this);
+      this.handleInput = this.handleInput.bind(this);
+      this.handleNewMessage = this.handleNewMessage.bind(this);
+    }
 
   toggleMessages = () => {
     if(!this.state.showMessages){
@@ -52,10 +68,53 @@ class Provider extends Component {
 
   }
 
+  setActiveMessage = (idx, e) =>{
+    e.preventDefault();
+    console.log(idx, "selected")
+    if(idx === this.state.activeMessageIndex){
+      this.setState({activeMessageIndex: undefined})
+    } else {
+      this.setState({activeMessageIndex: idx})
+    }
+  }
+
+  setMessageSeen = idx =>{
+    const newConversations = this.state.conversations;
+    for(let i = 0; i < newConversations[idx].length; i++){
+      newConversations[idx].seen = true;
+    }
+    this.setState({conversations: newConversations})
+  }
+
+  handleInput = (e) => {
+    const newState= this.state;
+    newState.currentMessage = e.target.value;
+    this.setState({ newState })
+  }
+
+  handleNewMessage = (idx, e) => {
+    
+    const newConvo = this.state.conversations;
+    newConvo[idx].messages.push({
+      message: this.state.currentMessage,
+      name: "me",
+      seen: true,
+      date: new Date()
+    })
+
+    this.setState({
+      conversations: newConvo,
+      currentMessage: ''
+    })
+
+    e.preventDefault()
+
+  }
+
   render() {
     const { children } = this.props
-    const { showMessages, logoutDisplayed, conversations } = this.state
-    const { toggleMessages, toggleLogout } = this
+    const { currentMessage, showMessages, logoutDisplayed, conversations, activeMessageIndex} = this.state
+    const { toggleMessages, toggleLogout, setActiveMessage, setMessageSeen, handleInput, handleNewMessage } = this
 
     return (
       <Context.Provider
@@ -63,8 +122,14 @@ class Provider extends Component {
           showMessages,
           logoutDisplayed,
           toggleMessages,
+          setMessageSeen,
           toggleLogout,
-          conversations
+          setActiveMessage,
+          handleInput,
+          handleNewMessage,
+          activeMessageIndex,
+          conversations,
+          currentMessage
         }}
       >
         {children}

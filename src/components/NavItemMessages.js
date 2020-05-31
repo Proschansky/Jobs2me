@@ -35,7 +35,7 @@ export default function NavItemMessages() {
         <li className="nav-item dropdown no-arrow mx-1">
             <a className="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i className="fas fa-envelope fa-fw"></i>
-                <span className="badge badge-danger badge-counter">4</span>
+                <span className="badge badge-danger badge-counter">{state.conversations.filter(item=>!item.unseenMessages).length}</span>
             </a>
           <div className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
               <h6 className="dropdown-header">
@@ -44,7 +44,7 @@ export default function NavItemMessages() {
             
               {state.conversations.map((convo, index)=>{
                 return (
-                  <a className="dropdown-item d-flex align-items-center messageModal" href="#"  data-toggle="modal" data-target="#messageModal" key={index}>
+                  <a className="dropdown-item d-flex align-items-center messageModal" href="#"  data-toggle="modal" data-target="#messageModal" key={index} onClick={(e)=>state.setActiveMessage(index, e)}>
                     <div className="dropdown-list-image mr-3">
                       <img className="rounded-circle" src="https://via.placeholder.com/50" alt=""/>
                       <div className="status-indicator bg-success"></div>

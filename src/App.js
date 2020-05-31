@@ -5,6 +5,7 @@ import Contents from './components/Contents'
 import LogoutModal from './components/LogoutModal'
 import { Provider } from './Context'
 import ScrollToTop from './components/ScrollToTop'
+import MessageModal from './components/MessageModal'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Contents/>
         </ContentWrapper>
         <LogoutModal/>
+        <MessageModal />
         <ScrollToTop/>
       </div>
     </Provider>
