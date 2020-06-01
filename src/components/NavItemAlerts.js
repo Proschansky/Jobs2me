@@ -1,7 +1,9 @@
 import React from 'react'
+import { Consumer } from '../Context'
 
 export default function NavItemAlerts() {
     return (
+      <Consumer>{state=>(
         <li className="nav-item dropdown no-arrow mx-1">
               <a className="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i className="fas fa-bell fa-fw"></i>
@@ -48,6 +50,7 @@ export default function NavItemAlerts() {
                 </a>
                 <a className="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
               </div>
-            </li>
+            </li>)}
+          </Consumer>
     )
 }

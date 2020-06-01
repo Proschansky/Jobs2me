@@ -3,37 +3,12 @@ import { Consumer } from '../Context'
 import Moment from 'moment'
 
 export default function NavItemMessages() {
-
-  String.prototype.allReplace = function(obj) {
-    var retStr = this;
-    for (var x in obj) {
-        retStr = retStr.replace(new RegExp(x, 'g'), obj[x]);
-    }
-    return retStr;
-};
-
-  const replacementObj = {
-          "/a$/": "1",
-          "second": "s",
-          "seconds": "s",
-          "minute": "m",
-          "minutes": "m",
-          "hour": "h",
-          "hours": "h",
-          "day": "d", 
-          "days": "d",
-          "week": "w",
-          "weeks": "w",
-          "month": "m",
-          "year": "y",
-          "years": "y"        
-        }
     
     return (
       <Consumer>
         {state =>(
         <li className="nav-item dropdown no-arrow mx-1">
-            <a className="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a className="nav-link dropdown-toggle" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i className="fas fa-envelope fa-fw"></i>
                 <span className="badge badge-danger badge-counter">{state.conversations.filter(item=>!item.unseenMessages).length}</span>
             </a>
@@ -56,7 +31,7 @@ export default function NavItemMessages() {
                   </a>
                 )
               })}
-              <a className="dropdown-item text-center small text-gray-500" href="#">Show All Messages</a>
+              <a className="dropdown-item text-center small text-gray-500" onClick={state.toggleMessages}>Show All Messages</a>
           </div>
         </li>
         )

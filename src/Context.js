@@ -10,7 +10,7 @@ class Provider extends Component {
   constructor(){
       super()
       this.state = {
-        showMessages: true,
+        showMessages: false,
         logoutDisplayed: false,
         activeMessageIndex: undefined,
         currentMessage: '',
@@ -47,6 +47,7 @@ class Provider extends Component {
     }
 
   toggleMessages = () => {
+
     if(!this.state.showMessages){
         this.setState({showMessages: true})
     } else {

@@ -48,6 +48,7 @@ export default class ModalMessageTabRight extends React.Component{
         
         <Consumer>
             {state =>(
+                (state.activeMessageIndex !== undefined) ?
                 <div className="tab-content" id="nav-tabContent">
                     <div id="sms_form">
                         <form name="send_sms" action="" onSubmit={(e)=>{state.handleNewMessage(state.activeMessageIndex, e) }}>
@@ -60,7 +61,7 @@ export default class ModalMessageTabRight extends React.Component{
                         <input type="submit" className="btn btn-primary float-right" name="sendSms" id="sendSms_btn" value="Send"/>		
                         </form>
                     </div>
-                    </div>
+                    </div> : null
             )
             }               
 

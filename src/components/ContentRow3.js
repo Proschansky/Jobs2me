@@ -13,23 +13,23 @@ export default function ContentRow3() {
                 <div className="card-body">
                   <h4 className="small font-weight-bold">Server Migration <span className="float-right">20%</span></h4>
                   <div className="progress mb-4">
-                    <div className="progress-bar bg-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div className="progress-bar bg-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style={{width: "20%"}}></div>
                   </div>
                   <h4 className="small font-weight-bold">Sales Tracking <span className="float-right">40%</span></h4>
                   <div className="progress mb-4">
-                    <div className="progress-bar bg-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div className="progress-bar bg-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style={{width: "40%"}}></div>
                   </div>
                   <h4 className="small font-weight-bold">Customer Database <span className="float-right">60%</span></h4>
                   <div className="progress mb-4">
-                    <div className="progress-bar" role="progressbar"  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div className="progress-bar" role="progressbar"  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={{width: "40%"}}></div>
                   </div>
                   <h4 className="small font-weight-bold">Payout Details <span className="float-right">80%</span></h4>
                   <div className="progress mb-4">
-                    <div className="progress-bar bg-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div className="progress-bar bg-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style={{width: "80%"}}></div>
                   </div>
                   <h4 className="small font-weight-bold">Account Setup <span className="float-right">Complete!</span></h4>
                   <div className="progress">
-                    <div className="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div className="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style={{width:"100%"}}></div>
                   </div>
                 </div>
               </div>
