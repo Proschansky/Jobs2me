@@ -94,7 +94,7 @@ class Provider extends Component {
   }
 
   handleNewMessage = (idx, e) => {
-    
+    e.preventDefault()
     const newConvo = this.state.conversations;
     newConvo[idx].messages.push({
       message: this.state.currentMessage,

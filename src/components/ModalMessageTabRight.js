@@ -27,8 +27,8 @@ export default class ModalMessageTabRight extends React.Component{
                 }
 
                 else {
-                    return (<div className="row mb-3 float-right" key={index}>
-                    <div className="col-md-8 bg-dark text-align-center text-light">
+                    return (<div className="col mb-3" key={index}>
+                    <div className="col-md-8 bg-dark float-right align-content-right text-light mb-3">
                     <div>{msg.message}</div>
                             <p style={{fontSize: "12px", paddingLeft: "3px"}}>{Moment(msg.date).format('l h:mm a')}</p>
                         </div>
