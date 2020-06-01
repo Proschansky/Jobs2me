@@ -16,7 +16,7 @@ export default function ModalHeader(props) {
                         <a className="nav-link" id="profile-tab" data-toggle="tab" role="tab" aria-controls="profile" aria-selected="false" onClick={()=>props.setIndex(1)}>Email</a>
                     </li>
                     <li className="nav-item" role="presentation">
-                        <a className="nav-link" id="contact-tab" data-toggle="tab" role="tab" aria-controls="contact" aria-selected="false">Phone</a>
+                        <a className="nav-link" id="contact-tab" data-toggle="tab" role="tab" aria-controls="contact" aria-selected="false" onClick={()=>props.setIndex(2)}>Phone</a>
                     </li>
                 </ul>
             </h5>

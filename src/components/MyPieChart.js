@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pie  } from 'react-chartjs-2'
+import Chart from "chart.js"
 
 export default class MyPieChart extends React.Component{
 
@@ -41,7 +41,11 @@ export default class MyPieChart extends React.Component{
             const myChartRef = this.chartRef.current.getContext("2d");
 
             new Chart(myChartRef, {
-                ...this.state
+                type: this.state.type,
+                data: this.state.data,
+                options: this.state.options,
+                legend: this.state.legend,
+                cutoutPercentage: this.state.cutoutPercentage
             })
         }
 

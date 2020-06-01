@@ -12,7 +12,6 @@ export default class MessageModal extends React.Component{
         state = {
             index: 0,
             activeEmail: 0,
-            emails: [0,1,2]
         }
 
         setIndex = idx => {
@@ -73,12 +72,21 @@ export default class MessageModal extends React.Component{
                         </div> 
                      </div>
 
+            const PhoneTab = 
+            <div class="tab-pane fade active show p-3" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+	            <strong>Phone tab</strong>
+            </div>
+
             if(index === 0){
                 ModalContent = MessageModalContent
             }
 
             if(index === 1){
                 ModalContent = EmailModalContent
+            }
+
+            if(index === 2){
+                ModalContent = PhoneTab
             }
 
             const style = state =>{

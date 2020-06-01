@@ -1,4 +1,6 @@
 import React from 'react'
+import MyAreaChart from './MyAreaChart'
+import MyPieChart from './MyPieChart'
 
 export default function ContentRow2() {
     const [toggleDropdown1, setToggleDropDown1] = React.useState(0)
@@ -29,7 +31,7 @@ export default function ContentRow2() {
 
             <div className="card-body">
               <div className="chart-area">
-                <canvas id="myAreaChart"></canvas>
+                <MyAreaChart />
               </div>
             </div>
           </div>
@@ -57,7 +59,7 @@ export default function ContentRow2() {
            
             <div className="card-body">
               <div className="chart-pie pt-4 pb-2">
-                <canvas id="myPieChart"></canvas>
+                <MyPieChart />
               </div>
               <div className="mt-4 text-center small">
                 <span className="mr-2">

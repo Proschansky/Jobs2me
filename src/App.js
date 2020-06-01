@@ -6,6 +6,7 @@ import LogoutModal from './components/LogoutModal'
 import { Provider } from './Context'
 import ScrollToTop from './components/ScrollToTop'
 import MessageModal from './components/MessageModal'
+import MyPieChart from './components/MyPieChart'
 
 function App() {
   return (
