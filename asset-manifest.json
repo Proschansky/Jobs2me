@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Jobs2me/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/Jobs2me/static/js/main.23d4407c.chunk.js",
+    "main.js.map": "/Jobs2me/static/js/main.23d4407c.chunk.js.map",
+    "runtime-main.js": "/Jobs2me/static/js/runtime-main.92d98df1.js",
+    "runtime-main.js.map": "/Jobs2me/static/js/runtime-main.92d98df1.js.map",
+    "static/js/2.008c34cb.chunk.js": "/Jobs2me/static/js/2.008c34cb.chunk.js",
+    "static/js/2.008c34cb.chunk.js.map": "/Jobs2me/static/js/2.008c34cb.chunk.js.map",
+    "index.html": "/Jobs2me/index.html",
+    "precache-manifest.7af8fcee89c1afa70fc578884a7f348f.js": "/Jobs2me/precache-manifest.7af8fcee89c1afa70fc578884a7f348f.js",
+    "service-worker.js": "/Jobs2me/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/Jobs2me/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.008c34cb.chunk.js.LICENSE.txt": "/Jobs2me/static/js/2.008c34cb.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.92d98df1.js",
+    "static/js/2.008c34cb.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.23d4407c.chunk.js"
+  ]
+}
