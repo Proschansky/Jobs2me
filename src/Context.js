@@ -59,6 +59,7 @@ class Provider extends Component {
   }
 
   toggleLogout = () => {
+    console.log("LOGOUT")
     if(!this.state.logoutDisplayed){
         this.setState({logoutDisplayed: true});
     } else {

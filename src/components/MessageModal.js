@@ -90,10 +90,9 @@ export default class MessageModal extends React.Component{
                         date: new Date()
                     })}
 
-            newState.emails[idx].currentMessage = { 
-                subject: undefined,
-                currentText: undefined 
-            }
+            newState.emails[idx].currentMessage.subject = undefined;
+            newState.emails[idx].currentMessage.currentText = undefined;
+                
 
             this.setState({ newState })
             
@@ -133,6 +132,15 @@ export default class MessageModal extends React.Component{
                 </div>
             </div>
 
+            const disabled = () =>{
+                const em = this.state.emails[this.state.emailIndex]
+                if(!em.currentMessage.subject || !em.currentMessage.currentText){
+                    return true
+                }
+
+                return false
+            }
+
             const priorEmails = (idx) =>{
                 const email = this.state.emails[idx];
                 const emails = email.messages ? email.messages.map((msg, i)=>{
@@ -156,16 +164,16 @@ export default class MessageModal extends React.Component{
                                 <div className="input-group-prepend">
                                     <span className="input-group-text" id="basic-addon1">To</span>
                                 </div>
-                                <input type="text" className="form-control" defaultValue={email.address} onKeyUp={(e)=>this.setAddress(idx, e)}/>
+                                <input type="text" className="form-control" value={email.address} onChange={(e)=>this.setAddress(idx, e)}/>
                             </div>
                              <div className="input-group mb-3">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text" id="basic-addon1">Subject</span>
                                 </div>
-                                <input type="text" className="form-control" defaultValue={email.currentMessage.subject} onKeyUp={(e)=>this.setSubject(idx,e)}/>
+                                <input type="text" className="form-control" value={email.currentMessage.subject} onChange={(e)=>this.setSubject(idx,e)}/>
                             </div>
                             <Editor className="email" initialValue={email.currentMessage.currentText} index={idx} setMessage={this.setMessage}></Editor>
-                            <button type="submit" className="btn btn-primary float-right mb-3" style={{ marginTop: "1rem" }} onClick={(e)=>this.handleSubmit(this.state.emailIndex, e)}>Send</button>
+                            <button type="button" disabled={disabled()} className="btn btn-primary float-right mb-3" style={{ marginTop: "1rem" }} onClick={(e)=>this.handleSubmit(this.state.emailIndex, e)}>Send</button>
                         </div>
                         </form>)
                 }

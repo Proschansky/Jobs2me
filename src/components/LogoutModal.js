@@ -2,14 +2,13 @@ import React from 'react'
 import { Modal } from 'react-bootstrap'
 import history from '../History'
 import Context from '../Context'
-import { useHistory } from 'react-router-dom';
 
 export default function LogoutModal() {
     const context = React.useContext(Context);
     const { logoutDisplayed, toggleLogout } = context;
-  
+    console.log(logoutDisplayed)
     return (
-        <Modal className="modal fade" show={logoutDisplayed} id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <Modal className="modal fade show" show={logoutDisplayed} id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
               <div className="modal-content">
                  <div className="modal-header">
