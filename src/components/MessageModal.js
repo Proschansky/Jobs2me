@@ -223,7 +223,7 @@ export default class MessageModal extends React.Component{
                     <div className="modal fade show" style={style(state)} id="messageModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div className="modal-dialog" role="document" style={{maxWidth: "75%"}}>
                             <div className="modal-content">
-                                <ModalHeader setIndex={this.setIndex}/>
+                                <ModalHeader setIndex={this.setIndex} index={this.state.index}/>
                                     {ModalContent}
                                     </div>
                                 </div>
