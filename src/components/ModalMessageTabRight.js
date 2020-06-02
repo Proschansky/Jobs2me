@@ -21,27 +21,23 @@ export default class ModalMessageTabRight extends React.Component{
             return st.conversations[idx].messages.map((msg, index)=>{
 
                 if( msg.name !== "me"){
-                    return(<div className="row mb-3" key={index}>
-                        <div className="col-md-8">
+                    return(
+                        <div className="col-md-8 bg-light mt-3 ml-3 mb-3" key={index}>
                         <div>{msg.message}</div>
-                                <p style={{fontSize: "12px", paddingLeft: "3px"}}>{Moment(msg.date).format('l h:mm a')}</p>
-                            </div>
-                            <div className="col-md-4">
-                                <p>&nbsp;</p>
-                            </div>
-                        </div>)
+                                <p style={{fontSize: "12px", paddingLeft: "3px", paddingTop:"3px"}}>{Moment(msg.date).format('l h:mm a')}</p>
+                        </div>
+                        )
                 }
 
                 else {
-                    return (<div className="col mb-3" key={index}>
-                    <div className="col-md-8 bg-dark float-right align-content-right text-light mb-3">
-                    <div>{msg.message}</div>
-                            <p style={{fontSize: "12px", paddingLeft: "3px"}}>{Moment(msg.date).format('l h:mm a')}</p>
+                    return (<>
+                        <div className="col-md-7 d-md-block"></div>
+                        <div className="col-md-4 d-md-inline-block bg-secondary float-right align-content-right text-light mb-3 mr-5">
+                        <div>{msg.message}</div>
+                                <p style={{fontSize: "12px", paddingLeft: "3px", paddingTop:"3px"}}>{Moment(msg.date).format('l h:mm a')}</p>
                         </div>
-                        <div className="col-md-4">
-                            <p>&nbsp;</p>
-                        </div>
-                    </div>)
+                        </>
+                    )
                 }
                 
             })
@@ -62,7 +58,9 @@ export default class ModalMessageTabRight extends React.Component{
                         <input type="hidden" name="oid" value="1234"/>
                         <input type="hidden" name="toNumber" value="<?php echo $userid; ?>"/>
                         <input type="hidden" name="toNumber" value="+14049638521"/>
+                        <div className="row mb-3">
                         {this.priorMessages(state, state.activeMessageIndex)}
+                        </div>
                         <textarea className="form-control" style={{marginBottom: "1rem"}} value={state.currentMessage} onChange={state.handleInput} onKeyDown={(e)=>this.handleKeyPress(state, e)}></textarea>
                         <input type="submit" className="btn btn-primary float-right" name="sendSms" id="sendSms_btn" value="Send"/>		
                         </form>

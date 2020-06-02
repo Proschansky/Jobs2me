@@ -3,14 +3,17 @@ import { Editor } from '@tinymce/tinymce-react';
 
 export default class EmailArea extends React.Component{
 
-    handleEditorChange = (content, editor) => {
-      console.log('Content was updated:', content);
+    constructor(props){
+      super(props)
     }
- 
+
     render() {
+      const { initialValue, index, setMessage } = this.props;
+      
       return (
         <Editor
           init={{
+            initialValue: initialValue,
             height: 300,
             browser_spellcheck : true,
             menubar: false,
@@ -36,7 +39,7 @@ export default class EmailArea extends React.Component{
             ]
 			      }
           }}
-          onEditorChange={this.handleEditorChange}
+          onKeyUp={(e)=>setMessage(index, e)}
         />
       );
     }

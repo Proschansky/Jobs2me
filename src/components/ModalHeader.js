@@ -2,7 +2,7 @@ import React from 'react'
 import { Consumer } from '../Context'
 
 export default function ModalHeader(props) {
-    console.log(props)
+  
     return (
     <Consumer>
         {state =>(
