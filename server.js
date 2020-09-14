@@ -2,7 +2,7 @@
 //
 const path = require('path');
 const express = require('express');
-const PORT = process.env.HTTP_PORT || 4001;
+const PORT = process.env.HTTP_PORT || 8081;
 const app = express();
 app.use(express.static(path.join(__dirname, 'frontend', 'build')));
 app.get('*', (req, res) => {
